@@ -1,5 +1,7 @@
+import {Cart} from './components/Cart/Cart.tsx';
+
 function App() {
-    return <div>App</div>
+    return <Cart />
 }
 
 export default App
