@@ -1,8 +1,13 @@
-import {Cart} from './components/Cart/Cart.tsx';
-import {Header} from "./components/Header/Header.tsx";
+import {Header} from './components/Header/Header.tsx';
+import {Posts} from './components/Posts/Posts.tsx';
 
 function App() {
-    return <Header />
+    return (
+        <>
+            <Header/>
+            <Posts/>
+        </>
+    )
 }
 
 export default App

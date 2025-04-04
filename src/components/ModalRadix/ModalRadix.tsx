@@ -1,49 +1,26 @@
 import {Cross2Icon} from "@radix-ui/react-icons";
-import styles from "./ModalRadix.module.css";
+import s from "./ModalRadix.module.css";
 import * as Dialog from "@radix-ui/react-dialog";
+import {ReactNode} from 'react';
 
-export const ModalRadix = () => (
-    <Dialog.Root>
-        <Dialog.Trigger asChild>
-            <button className={`${styles.Button} violet`}>Edit profile</button>
-        </Dialog.Trigger>
+type Props = {
+    open: boolean
+    onClose: () => void
+    children: ReactNode
+    modalTitle: string
+}
+
+export const ModalRadix = ({open, modalTitle, onClose, children}:Props) => (
+    <Dialog.Root open={open} onOpenChange={onClose}>
         <Dialog.Portal>
-            <Dialog.Overlay className={styles.Overlay}/>
-            <Dialog.Content className={styles.Content}>
-                <Dialog.Title className={styles.Title}>Edit profile</Dialog.Title>
-                <Dialog.Description className={styles.Description}>
-                    Make changes to your profile here. Click save when you're done.
-                </Dialog.Description>
-                <fieldset className={styles.Fieldset}>
-                    <label className={styles.Label} htmlFor="name">
-                        Name
-                    </label>
-                    <input
-                        className={styles.Input}
-                        id="name"
-                        defaultValue="Pedro Duarte"
-                    />
-                </fieldset>
-                <fieldset className={styles.Fieldset}>
-                    <label className={styles.Label} htmlFor="username">
-                        Username
-                    </label>
-                    <input
-                        className={styles.Input}
-                        id="username"
-                        defaultValue="@peduarte"
-                    />
-                </fieldset>
-                <div
-                    style={{display: "flex", marginTop: 25, justifyContent: "flex-end"}}
-                >
-                    <Dialog.Close asChild>
-                        <button className={`${styles.Button} green`}>Save changes</button>
-                    </Dialog.Close>
-                </div>
+            <Dialog.Overlay className={s.Overlay} />
+            <Dialog.Content className={s.Content}>
+                <Dialog.Title className={s.Title}>{modalTitle}</Dialog.Title>
+                <hr />
+                {children}
                 <Dialog.Close asChild>
-                    <button className={styles.IconButton} aria-label="Close">
-                        <Cross2Icon/>
+                    <button className={s.IconButton} aria-label="Close">
+                        <Cross2Icon />
                     </button>
                 </Dialog.Close>
             </Dialog.Content>
