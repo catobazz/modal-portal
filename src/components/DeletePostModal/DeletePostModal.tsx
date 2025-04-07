@@ -8,7 +8,7 @@ type Props = {
 
 export const DeletePostModal = ({ open, onClose }: Props) => {
     return (
-        <ModalRadix open={open} onClose={onClose} modalTitle={'Delete Post'}>
+        <ModalRadix open={open} onClose={onClose} modalTitle={'Delete Post'} size={'small'}>
             Are you sure you want to delete this post?
             <div>
                 {/*Будем использовать обычные кнопки*/}
